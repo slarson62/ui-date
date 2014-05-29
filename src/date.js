@@ -109,7 +109,7 @@ angular.module('ui.date', [])
           return null;
         });
         modelCtrl.$parsers.push(function(value){
-          if (value) {
+          if (value && angular.isDate(value)) {
             return value.toISOString();
           }
           return null;
