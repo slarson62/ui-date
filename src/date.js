@@ -10,7 +10,7 @@ angular.module('ui.date', [])
 
 .constant('uiDateConfig', {})
 
-.directive('uiDate', ['uiDateConfig', function (uiDateConfig) {
+.directive('uiDate', ['$rootScope', 'uiDateConfig', function ($rootScope, uiDateConfig) {
   'use strict';
   var options;
   options = {};
@@ -38,6 +38,7 @@ angular.module('ui.date', [])
               _onSelect(value, picker);
               element.blur();
             });
+            $rootScope.$broadcast("DATE_SELECTED");
           };
           opts.beforeShow = function() {
             showing = true;
